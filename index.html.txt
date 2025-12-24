@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>For Sakshi ❤️</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{
+  height:100vh;
+  background:linear-gradient(135deg,#ff758c,#ff7eb3);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:white;
+  text-align:center;
+  overflow:hidden;
+}
+.tap-screen,.main-screen{
+  position:absolute;
+  width:100%;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  transition:opacity .7s ease;
+}
+.main-screen{opacity:0;pointer-events:none}
+.main-screen.active{opacity:1;pointer-events:auto}
+.tap-screen h1{font-size:2.2rem;text-shadow:0 0 10px rgba(255,255,255,.6)}
+.tap-screen p{font-size:1.2rem;margin-top:10px}
+.photo{
+  width:220px;height:220px;border-radius:50%;
+  overflow:hidden;border:6px solid white;
+  box-shadow:0 0 25px rgba(255,255,255,.7);
+  margin-bottom:20px;
+}
+.photo img{width:100%;height:100%;object-fit:cover}
+h2{font-size:2.1rem;margin-bottom:12px}
+.message{font-size:1.1rem;max-width:320px;line-height:1.7}
+.heart{
+  position:fixed;bottom:-10px;
+  animation:floatUp linear infinite;
+}
+@keyframes floatUp{
+  to{transform:translateY(-110vh);opacity:0}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Music -->
+<audio id="music" loop>
+  <source src="romantic.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Tap Screen -->
+<div class="tap-screen" id="tap">
+  <h1>For someone special ❤️</h1>
+  <p>Tap me</p>
+</div>
+
+<!-- Main Screen -->
+<div class="main-screen" id="main">
+  <div class="photo">
+    <img src="sakshi.jpg" alt="Sakshi">
+  </div>
+  <h2>Sakshi ❤️</h2>
+  <p class="message">
+    Every smile of yours makes my world brighter.  
+    You are the most beautiful part of my days,  
+    and I’m grateful for you… always 💕
+  </p>
+</div>
+
+<script>
+const tap=document.getElementById('tap');
+const main=document.getElementById('main');
+const music=document.getElementById('music');
+
+tap.addEventListener('click',()=>{
+  tap.style.opacity=0;
+  music.play();
+  setTimeout(()=>{
+    tap.style.display='none';
+    main.classList.add('active');
+  },500);
+});
+
+// Floating hearts
+for(let i=0;i<35;i++){
+  const heart=document.createElement('div');
+  heart.className='heart';
+  heart.innerHTML='❤️';
+  heart.style.left=Math.random()*100+'vw';
+  heart.style.animationDuration=(Math.random()*4+3)+'s';
+  heart.style.fontSize=(Math.random()*12+12)+'px';
+  document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
